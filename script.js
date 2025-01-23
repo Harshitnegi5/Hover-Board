@@ -1,7 +1,6 @@
 let container = document.querySelector(".main > .container");
 
-let colors = ["#86E272", "#F7A4E0", "#6BB4F9", "#FFE669", "#FF3D3E", "#DAA4FF"];
-
+let colors = ["A", "B", "C", "D", "E", "F", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 let square = 500;
 
@@ -16,9 +15,13 @@ for (let i = 0; i < square; i++) {
   square.addEventListener("mouseleave", () => removeColor(square));
 }
 function setColor(element) {
-  const color = getRandomColors();
-  element.style.background = color;
-  element.style.boxShadow = ` 0 2px ${color}, 0 0 10px ${color}`;
+  let hex = "#";
+
+  for (let i = 0; i < 6; i++) {
+    hex += getRandomColors();
+  }
+  element.style.background = hex;
+  element.style.boxShadow = ` 0 2px ${hex}, 0 0 10px ${hex}`;
 }
 
 function removeColor(element) {
@@ -26,6 +29,6 @@ function removeColor(element) {
   element.style.boxShadow = ` 0 0 2px #000`;
 }
 
-function getRandomColors(){
-    return colors[Math.floor(Math.random() * colors.length)]
-}
+const getRandomColors = () => {
+  return colors[Math.floor(Math.random() * colors.length)];
+};
